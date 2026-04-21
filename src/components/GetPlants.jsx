@@ -5,7 +5,7 @@ function GetPlants({plants, setPlants}){
     const [data, setData] = useState(null);
     fetchApi(data, setData);
     parseData(data, plants, setPlants);
-    return < DisplayData plants={plants} />;
+    return
 }
 
 function fetchApi(data, setData) {
@@ -35,7 +35,7 @@ function parseData(data, plants, setPlants){
     }
 }
 
-
+/*
 function display(id,name,image){
     return(
         <div key={id}>
@@ -54,6 +54,6 @@ function DisplayData({plants}){
         </div>
     );
 }
-
+*/
 export default GetPlants;
 
