@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState ,useEffect} from 'react'
 // import GetPlants from './components/GetPlants.jsx'
 import Game from './components/Game.jsx'
 import './App.css'
@@ -16,14 +16,31 @@ const cachePlants=[
 
 
 function App() {
-  const [plants, setPlants] = useState(cachePlants)   //change to []   cachePlants
+  const [plants, setPlants] = useState(cachePlants)      //change to []
+   const [isLoading, setIsLoading] = useState(false)      //change to true
   
-  console.log( "got", plants )
+  useEffect( ()=>{
+    async function fetchData(){
+      let fetched=[]
+      fetched= await GetPlants();
+      console.log( "fetched", fetched);
+      setPlants(fetched);
+      setIsLoading(false);
+    }
+  //  fetchData()
+  },[])
 
-  return (<div>
-  {/*   <GetPlants plants={plants} setPlants={setPlants} /> */}
-      <Game plants={plants}/>
-      </div>
-  )}    
+  if(!isLoading){
+    return (<div> 
+        <Game plants={plants}/>;
+        </div>
+    )
+  }
+}    
 
 export default App
+
+
+
+
+ {/*   <GetPlants plants={plants} setPlants={setPlants} /> */}

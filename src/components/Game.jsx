@@ -34,6 +34,7 @@ function Game({plants}){
             setClickedList([]);
             if(topScore <currentScore){ setTopScore(currentScore)} ;
             setCurrentScore(0);
+            alert("You already clicked that!!")
             console.log("inside false", clicked, clickedList);
             return false
         } else {
